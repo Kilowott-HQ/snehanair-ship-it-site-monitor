@@ -6,13 +6,32 @@ on:
     - cron: "*/5 * * * *"
   workflow_dispatch: # Allow manual trigger for testing
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   monitor:
     runs-on: ubuntu-latest
+    concurrency:
+      group: site-monitor
+      cancel-in-progress: false
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Restore uptime data from data branch
+        run: |
+          git fetch origin data || true
+          if git show origin/data:data/uptime-data.json > /dev/null 2>&1; then
+            mkdir -p data
+            git show origin/data:data/uptime-data.json > data/uptime-data.json
+            echo "Restored uptime data from data branch"
+          else
+            echo "No existing uptime data found, starting fresh"
+          fi
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -39,3 +58,53 @@ jobs:
           VITALS_MINUTES: 30
           TIMEOUT_MS: 20000
         run: node web-monitor.js --once
+
+      - name: Backup generated files
+        run: |
+          cp data/uptime-data.json /tmp/uptime-data.json
+          cp -r status-page /tmp/status-page
+
+      - name: Persist uptime data to data branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          if git ls-remote --exit-code origin data > /dev/null 2>&1; then
+            git fetch origin data
+            git checkout data
+          else
+            git checkout --orphan data
+            git rm -rf . 2>/dev/null || true
+          fi
+
+          mkdir -p data
+          cp /tmp/uptime-data.json data/uptime-data.json
+          git add data/uptime-data.json
+          git diff --cached --quiet || git commit -m "Update uptime data [skip ci]"
+          git push origin data
+
+      - name: Checkout main for pages deploy
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Restore status page
+        run: |
+          mkdir -p status-page
+          cp -r /tmp/status-page/* status-page/
+
+      - name: Upload status page artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: status-page
+
+  deploy-pages:
+    needs: monitor
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

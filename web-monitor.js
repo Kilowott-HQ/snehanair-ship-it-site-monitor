@@ -15,6 +15,8 @@ require('dotenv').config();
 const fetch = globalThis.fetch || require('node-fetch');
 const nodemailer = require('nodemailer');
 const cron = require('node-cron');
+const uptimeStore = require('./uptime-store');
+const { generateStatusPage } = require('./status-page');
 
 const LOG_PREFIX = '[site-monitor]';
 const WATCH_INTERVAL_MINUTES = Number(process.env.INTERVAL_MINUTES || 5);
@@ -243,10 +245,14 @@ async function sendAlert(subject, text, { type = 'info', site = {}, vitals = nul
 
 async function monitorCycle() {
   console.log(`${LOG_PREFIX} Starting check cycle at ${now()}`);
+  const data = uptimeStore.loadData();
 
   await Promise.all(sites.map(async site => {
     const currentState = state[site.url] = state[site.url] || { downCount: 0, lastVitals: null };
     const availability = await checkAvailability(site);
+
+    // Record check in persistent store
+    uptimeStore.recordCheck(data, site, availability);
 
     if (!availability.success) {
       currentState.downCount += 1;
@@ -282,6 +288,9 @@ async function monitorCycle() {
         const vitals = await fetchCoreWebVitals(site);
         currentState.lastVitals = { when: Date.now(), vitals };
 
+        // Record vitals in persistent store
+        uptimeStore.recordVitals(data, site, vitals);
+
         if (isVitalsBad(vitals)) {
           console.warn(`${LOG_PREFIX} ${site.name} bad CWV`, vitals);
           await sendAlert(
@@ -298,6 +307,9 @@ async function monitorCycle() {
     }
   }));
 
+  // Save data and generate status page
+  uptimeStore.saveData(data);
+  generateStatusPage();
   console.log(`${LOG_PREFIX} Check cycle completed at ${now()}`);
 }
 
