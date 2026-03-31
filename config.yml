@@ -17,34 +17,6 @@ teams:
       level_2_after_minutes: 10
       level_3_after_minutes: 30
 sites:
-  - name: Equinavia
-    url: https://equinavia.com
-    region: us
-    team: default
-    sla_target: 99.9
-    check_endpoints:
-      - path: /
-        method: GET
-        expected_status: 200
-    auth: null
-    tags:
-      - production
-      - client
-    vitals_enabled: true
-  - name: Preikestolen
-    url: https://preikestolenbasecamp.com
-    region: 'no'
-    team: default
-    sla_target: 99.5
-    check_endpoints:
-      - path: /
-        method: GET
-        expected_status: 200
-    auth: null
-    tags:
-      - production
-      - client
-    vitals_enabled: true
   - name: kodework
     url: https://kodework.com
     region: global
