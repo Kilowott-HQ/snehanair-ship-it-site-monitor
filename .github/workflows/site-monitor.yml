@@ -96,20 +96,20 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-          # Use a separate clone to push data to avoid branch conflicts
-          git clone --depth 1 https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git /tmp/data-repo || true
-          cd /tmp/data-repo
+          REPO_URL="https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git"
 
+          if git ls-remote --exit-code "$REPO_URL" data > /dev/null 2>&1; then
+            git clone --single-branch --branch data --depth 1 "$REPO_URL" /tmp/data-repo
+          else
+            git init /tmp/data-repo
+            cd /tmp/data-repo
+            git remote add origin "$REPO_URL"
+            git checkout --orphan data
+          fi
+
+          cd /tmp/data-repo
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          if git ls-remote --exit-code origin data > /dev/null 2>&1; then
-            git fetch origin data
-            git checkout data
-          else
-            git checkout --orphan data
-            git rm -rf . 2>/dev/null || true
-          fi
 
           mkdir -p data
           cp /tmp/uptime-data.json data/uptime-data.json
