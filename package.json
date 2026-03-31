@@ -1,0 +1,19 @@
+{
+  "name": "site-monitor",
+  "version": "1.0.0",
+  "description": "Uptime + Core Web Vitals monitor with email alerts",
+  "main": "web-monitor.js",
+  "scripts": {
+    "start": "node web-monitor.js",
+    "dev": "node web-monitor.js"
+  },
+  "dependencies": {
+    "dotenv": "^16.4.0",
+    "node-cron": "^3.0.2",
+    "nodemailer": "^6.9.5",
+    "node-fetch": "^3.3.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
