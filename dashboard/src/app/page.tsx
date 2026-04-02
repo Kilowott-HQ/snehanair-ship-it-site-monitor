@@ -232,8 +232,22 @@ function MonitorRow({ site, expanded, onToggle, onRemove, onEdit, onPause, onRef
   const isUp = site.currentStatus === "up";
   const isDown = site.currentStatus === "down";
 
+  const [testing, setTesting] = useState(false);
   const testNotification = async () => {
-    alert("Test alert sent! Check your email/Telegram.");
+    setTesting(true);
+    try {
+      const r = await fetch("/api/test-alert", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name: site.name, url: site.url }),
+      });
+      const d = await r.json();
+      alert(d.results?.join("\n") || "Sent!");
+    } catch {
+      alert("Failed to send test");
+    } finally {
+      setTesting(false);
+    }
   };
 
   return (
@@ -265,7 +279,7 @@ function MonitorRow({ site, expanded, onToggle, onRemove, onEdit, onPause, onRef
         <div className="border-t border-gray-800 bg-gray-900/50 px-4 py-5">
           {/* action buttons */}
           <div className="flex items-center gap-2 mb-5">
-            <button onClick={(e) => { e.stopPropagation(); testNotification(); }} className="text-xs border border-gray-700 text-gray-400 px-3 py-1.5 rounded hover:bg-gray-800 cursor-pointer">Test notification</button>
+            <button onClick={(e) => { e.stopPropagation(); testNotification(); }} disabled={testing} className="text-xs border border-gray-700 text-gray-400 px-3 py-1.5 rounded hover:bg-gray-800 disabled:opacity-50 cursor-pointer">{testing ? "Sending..." : "Test notification"}</button>
             <button onClick={(e) => { e.stopPropagation(); onPause(); }} className="text-xs border border-gray-700 text-gray-400 px-3 py-1.5 rounded hover:bg-gray-800 cursor-pointer">{site.paused ? "Resume" : "Pause"}</button>
             <button onClick={(e) => { e.stopPropagation(); onEdit(); }} className="text-xs border border-gray-700 text-gray-400 px-3 py-1.5 rounded hover:bg-gray-800 cursor-pointer">Edit</button>
             <div className="flex-1" />
