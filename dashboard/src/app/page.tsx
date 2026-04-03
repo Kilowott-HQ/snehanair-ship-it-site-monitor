@@ -252,6 +252,109 @@ function ResponseChart({ data }: { data: { t: string; l: number }[] }) {
   );
 }
 
+// ─── latency analysis ───
+function LatencyAnalysis({ data, siteName }: { data: { t: string; l: number }[]; siteName: string }) {
+  if (data.length < 3) return null;
+
+  const latencies = data.map(d => d.l);
+  const avg = Math.round(latencies.reduce((s, l) => s + l, 0) / latencies.length);
+  const min = Math.min(...latencies);
+  const max = Math.max(...latencies);
+  const latest = latencies[latencies.length - 1];
+
+  // Trend: compare first half vs second half
+  const mid = Math.floor(latencies.length / 2);
+  const firstHalf = latencies.slice(0, mid);
+  const secondHalf = latencies.slice(mid);
+  const avgFirst = firstHalf.reduce((s, l) => s + l, 0) / firstHalf.length;
+  const avgSecond = secondHalf.reduce((s, l) => s + l, 0) / secondHalf.length;
+  const changePct = ((avgSecond - avgFirst) / avgFirst) * 100;
+
+  const trend = changePct > 20 ? "degrading" : changePct < -20 ? "improving" : "stable";
+  const trendIcon = trend === "degrading" ? "↗" : trend === "improving" ? "↘" : "→";
+  const trendColor = trend === "degrading" ? "text-red-400" : trend === "improving" ? "text-green-400" : "text-gray-400";
+  const trendLabel = trend === "degrading" ? "Slowing down" : trend === "improving" ? "Getting faster" : "Stable";
+
+  // Speed rating
+  const rating = avg < 300 ? { label: "Excellent", color: "text-green-400", bg: "bg-green-500/10" }
+    : avg < 800 ? { label: "Good", color: "text-green-400", bg: "bg-green-500/10" }
+    : avg < 1500 ? { label: "Fair", color: "text-yellow-400", bg: "bg-yellow-500/10" }
+    : avg < 2500 ? { label: "Slow", color: "text-orange-400", bg: "bg-orange-500/10" }
+    : { label: "Very Slow", color: "text-red-400", bg: "bg-red-500/10" };
+
+  // Stability (coefficient of variation)
+  const stdDev = Math.sqrt(latencies.reduce((s, l) => s + Math.pow(l - avg, 2), 0) / latencies.length);
+  const cv = (stdDev / avg) * 100;
+  const stability = cv < 15 ? { label: "Very stable", color: "text-green-400" }
+    : cv < 30 ? { label: "Stable", color: "text-green-400" }
+    : cv < 50 ? { label: "Moderate variation", color: "text-yellow-400" }
+    : { label: "Unstable", color: "text-red-400" };
+
+  // Recommendation
+  const recs: string[] = [];
+  if (avg > 2000) recs.push("Response time is very high. Consider checking server performance, upgrading hosting, or using a CDN.");
+  else if (avg > 1000) recs.push("Response time is above 1 second. Users may experience delays. Consider enabling caching or optimizing server response.");
+  if (trend === "degrading") recs.push(`Latency increased ${Math.abs(changePct).toFixed(0)}% recently. Monitor for continued degradation — may indicate growing server load.`);
+  if (cv > 50) recs.push("Response time is highly variable. This could indicate intermittent server issues or network instability.");
+  if (latest > avg * 1.5 && latest > 1000) recs.push(`Latest check (${latest}ms) is significantly above average (${avg}ms). Possible temporary issue.`);
+
+  return (
+    <div className="mt-4 border-t border-gray-700/50 pt-4">
+      <div className="text-xs font-semibold text-gray-400 mb-3">Analysis</div>
+
+      {/* metrics row */}
+      <div className="grid grid-cols-5 gap-3 mb-3">
+        <div className="bg-gray-800/80 rounded-lg p-2.5 text-center">
+          <div className="text-[10px] text-gray-500">Average</div>
+          <div className="text-sm font-bold text-white">{avg}ms</div>
+        </div>
+        <div className="bg-gray-800/80 rounded-lg p-2.5 text-center">
+          <div className="text-[10px] text-gray-500">Fastest</div>
+          <div className="text-sm font-bold text-green-400">{min}ms</div>
+        </div>
+        <div className="bg-gray-800/80 rounded-lg p-2.5 text-center">
+          <div className="text-[10px] text-gray-500">Slowest</div>
+          <div className="text-sm font-bold text-red-400">{max}ms</div>
+        </div>
+        <div className="bg-gray-800/80 rounded-lg p-2.5 text-center">
+          <div className="text-[10px] text-gray-500">Trend</div>
+          <div className={`text-sm font-bold ${trendColor}`}>{trendIcon} {trendLabel}</div>
+        </div>
+        <div className={`${rating.bg} rounded-lg p-2.5 text-center`}>
+          <div className="text-[10px] text-gray-500">Rating</div>
+          <div className={`text-sm font-bold ${rating.color}`}>{rating.label}</div>
+        </div>
+      </div>
+
+      {/* stability */}
+      <div className="flex items-center gap-2 mb-3 text-xs">
+        <span className="text-gray-500">Stability:</span>
+        <span className={stability.color}>{stability.label}</span>
+        <span className="text-gray-600">(±{Math.round(stdDev)}ms variation)</span>
+      </div>
+
+      {/* recommendations */}
+      {recs.length > 0 && (
+        <div className="space-y-1.5">
+          {recs.map((r, i) => (
+            <div key={i} className="flex gap-2 text-xs">
+              <span className="text-yellow-500 flex-shrink-0 mt-0.5">●</span>
+              <span className="text-gray-400">{r}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {recs.length === 0 && (
+        <div className="flex gap-2 text-xs">
+          <span className="text-green-500 flex-shrink-0">●</span>
+          <span className="text-gray-400">{siteName} is performing well. No issues detected.</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
 // ─── monitor row ───
 function MonitorRow({ site, expanded, onToggle, onRemove, onEdit, onPause, onRefresh }: {
   site: SiteStatus; expanded: boolean;
@@ -400,13 +503,14 @@ function MonitorRow({ site, expanded, onToggle, onRemove, onEdit, onPause, onRef
             </div>
           </div>
 
-          {/* response time chart */}
+          {/* response time chart + analysis */}
           <div className="bg-gray-800/50 rounded-lg p-4 mb-5">
             <div className="flex items-center justify-between mb-2">
               <span className="text-sm font-semibold text-white">Response time</span>
               <span className="text-xs text-gray-500">Last {site.responseHistory.length} checks</span>
             </div>
             <ResponseChart data={site.responseHistory} />
+            <LatencyAnalysis data={site.responseHistory} siteName={site.name} />
           </div>
 
           {/* alert emails */}
