@@ -1,0 +1,120 @@
+{
+  "sites": {
+    "https://kodework.com": {
+      "name": "kodework",
+      "url": "https://kodework.com",
+      "checks": [
+        {
+          "timestamp": "2026-04-24T08:56:50.691Z",
+          "success": true,
+          "status": 200,
+          "latency": 210,
+          "error": null
+        }
+      ],
+      "incidents": [],
+      "currentIncident": null,
+      "stats": {
+        "totalChecks": 1,
+        "successfulChecks": 1
+      }
+    },
+    "https://norweh.com/": {
+      "name": "norweh.com",
+      "url": "https://norweh.com/",
+      "checks": [
+        {
+          "timestamp": "2026-04-24T08:56:50.945Z",
+          "success": true,
+          "status": 200,
+          "latency": 406,
+          "error": null
+        }
+      ],
+      "incidents": [],
+      "currentIncident": null,
+      "stats": {
+        "totalChecks": 1,
+        "successfulChecks": 1
+      }
+    },
+    "https://creometric.com": {
+      "name": "creometric.com",
+      "url": "https://creometric.com",
+      "checks": [
+        {
+          "timestamp": "2026-04-24T08:56:51.070Z",
+          "success": true,
+          "status": 200,
+          "latency": 535,
+          "error": null
+        }
+      ],
+      "incidents": [],
+      "currentIncident": null,
+      "stats": {
+        "totalChecks": 1,
+        "successfulChecks": 1
+      }
+    },
+    "https://basecampexplorer.com/": {
+      "name": "basecampexplorer.com",
+      "url": "https://basecampexplorer.com/",
+      "checks": [
+        {
+          "timestamp": "2026-04-24T08:56:51.395Z",
+          "success": true,
+          "status": 200,
+          "latency": 857,
+          "error": null
+        }
+      ],
+      "incidents": [],
+      "currentIncident": null,
+      "stats": {
+        "totalChecks": 1,
+        "successfulChecks": 1
+      }
+    },
+    "https://coo.no/": {
+      "name": "coo.no",
+      "url": "https://coo.no/",
+      "checks": [
+        {
+          "timestamp": "2026-04-24T08:56:51.517Z",
+          "success": true,
+          "status": 200,
+          "latency": 981,
+          "error": null
+        }
+      ],
+      "incidents": [],
+      "currentIncident": null,
+      "stats": {
+        "totalChecks": 1,
+        "successfulChecks": 1
+      }
+    },
+    "http://norweh.ca/": {
+      "name": "norweh.ca",
+      "url": "http://norweh.ca/",
+      "checks": [
+        {
+          "timestamp": "2026-04-24T08:56:51.532Z",
+          "success": true,
+          "status": 200,
+          "latency": 993,
+          "error": null
+        }
+      ],
+      "incidents": [],
+      "currentIncident": null,
+      "stats": {
+        "totalChecks": 1,
+        "successfulChecks": 1
+      }
+    }
+  },
+  "regionChecks": {},
+  "lastUpdated": "2026-04-24T08:56:51.532Z"
+}
