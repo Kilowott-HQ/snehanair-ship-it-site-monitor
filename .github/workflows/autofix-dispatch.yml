@@ -1,0 +1,50 @@
+name: Forward auto-fix label to repo-health
+
+# Installed on every Kilowott-HQ target repo by
+# Kilowott-HQ/repo-health:scripts/setup-autofix-dispatcher.sh
+#
+# When a user applies the `auto-fix` label to an issue in this repo, this
+# workflow fires a repository_dispatch event to Kilowott-HQ/repo-health,
+# which then runs the actual auto-fix orchestrator.
+#
+# Requires org-level secrets APP_ID + APP_PRIVATE_KEY (Kilowott Repo Health
+# Bot App) to be available to this repo.
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  issues: read
+
+jobs:
+  dispatch:
+    if: ${{ github.event.label.name == 'auto-fix' }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate App token
+        id: app-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.APP_ID }}
+          private-key: ${{ secrets.APP_PRIVATE_KEY }}
+          owner: Kilowott-HQ
+
+      - name: Fire repository_dispatch to repo-health
+        env:
+          # Pass user-controlled fields via env instead of inline ${{ }}
+          # interpolation — otherwise a crafted issue title could escape
+          # the shell string and execute arbitrary commands on the runner.
+          GH_TOKEN:     ${{ steps.app-token.outputs.token }}
+          TARGET_REPO:  ${{ github.event.repository.name }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ISSUE_TITLE:  ${{ github.event.issue.title }}
+        run: |
+          set -euo pipefail
+          gh api repos/Kilowott-HQ/repo-health/dispatches \
+            --method POST \
+            -f event_type=autofix-requested \
+            -f "client_payload[target_repo]=$TARGET_REPO" \
+            -f "client_payload[issue_number]=$ISSUE_NUMBER" \
+            -f "client_payload[issue_title]=$ISSUE_TITLE"
+          echo "Dispatched autofix-requested for issue #$ISSUE_NUMBER"
