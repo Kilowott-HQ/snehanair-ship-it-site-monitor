@@ -542,13 +542,20 @@
           "status": 200,
           "latency": 358,
           "error": null
+        },
+        {
+          "timestamp": "2026-04-27T18:58:35.603Z",
+          "success": true,
+          "status": 200,
+          "latency": 377,
+          "error": null
         }
       ],
       "incidents": [],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 77,
-        "successfulChecks": 77
+        "totalChecks": 78,
+        "successfulChecks": 78
       }
     },
     "https://norweh.com/": {
@@ -1093,12 +1100,28 @@
           "status": 200,
           "latency": 387,
           "error": null
+        },
+        {
+          "timestamp": "2026-04-27T18:58:55.281Z",
+          "success": false,
+          "status": null,
+          "latency": null,
+          "error": "This operation was aborted"
         }
       ],
       "incidents": [],
-      "currentIncident": null,
+      "currentIncident": {
+        "id": "inc-1777316335281",
+        "site": "norweh.com",
+        "url": "https://norweh.com/",
+        "startedAt": "2026-04-27T18:58:55.281Z",
+        "endedAt": null,
+        "durationMs": null,
+        "error": "This operation was aborted",
+        "checksDown": 1
+      },
       "stats": {
-        "totalChecks": 77,
+        "totalChecks": 78,
         "successfulChecks": 77
       }
     },
@@ -1644,13 +1667,20 @@
           "status": 200,
           "latency": 534,
           "error": null
+        },
+        {
+          "timestamp": "2026-04-27T18:58:35.842Z",
+          "success": true,
+          "status": 200,
+          "latency": 565,
+          "error": null
         }
       ],
       "incidents": [],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 77,
-        "successfulChecks": 77
+        "totalChecks": 78,
+        "successfulChecks": 78
       }
     },
     "https://basecampexplorer.com/": {
@@ -2195,13 +2225,20 @@
           "status": 200,
           "latency": 1166,
           "error": null
+        },
+        {
+          "timestamp": "2026-04-27T18:58:36.171Z",
+          "success": true,
+          "status": 200,
+          "latency": 892,
+          "error": null
         }
       ],
       "incidents": [],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 77,
-        "successfulChecks": 77
+        "totalChecks": 78,
+        "successfulChecks": 78
       }
     },
     "https://coo.no/": {
@@ -2746,13 +2783,20 @@
           "status": 200,
           "latency": 870,
           "error": null
+        },
+        {
+          "timestamp": "2026-04-27T18:58:36.227Z",
+          "success": true,
+          "status": 200,
+          "latency": 948,
+          "error": null
         }
       ],
       "incidents": [],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 77,
-        "successfulChecks": 77
+        "totalChecks": 78,
+        "successfulChecks": 78
       }
     },
     "http://norweh.ca/": {
@@ -3297,6 +3341,13 @@
           "status": null,
           "latency": null,
           "error": "fetch failed"
+        },
+        {
+          "timestamp": "2026-04-27T18:58:36.363Z",
+          "success": true,
+          "status": 200,
+          "latency": 1083,
+          "error": null
         }
       ],
       "incidents": [
@@ -3309,24 +3360,25 @@
           "durationMs": 2847853,
           "error": "fetch failed",
           "checksDown": 1
+        },
+        {
+          "id": "inc-1777312076967",
+          "site": "norweh.ca",
+          "url": "http://norweh.ca/",
+          "startedAt": "2026-04-27T17:47:56.967Z",
+          "endedAt": "2026-04-27T18:58:36.363Z",
+          "durationMs": 4239396,
+          "error": "fetch failed",
+          "checksDown": 1
         }
       ],
-      "currentIncident": {
-        "id": "inc-1777312076967",
-        "site": "norweh.ca",
-        "url": "http://norweh.ca/",
-        "startedAt": "2026-04-27T17:47:56.967Z",
-        "endedAt": null,
-        "durationMs": null,
-        "error": "fetch failed",
-        "checksDown": 1
-      },
+      "currentIncident": null,
       "stats": {
-        "totalChecks": 77,
-        "successfulChecks": 75
+        "totalChecks": 78,
+        "successfulChecks": 76
       }
     }
   },
   "regionChecks": {},
-  "lastUpdated": "2026-04-27T17:47:57.120Z"
+  "lastUpdated": "2026-04-27T18:58:55.282Z"
 }
