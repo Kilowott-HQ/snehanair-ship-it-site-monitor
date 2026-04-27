@@ -549,13 +549,20 @@
           "status": 200,
           "latency": 377,
           "error": null
+        },
+        {
+          "timestamp": "2026-04-27T20:07:01.342Z",
+          "success": true,
+          "status": 200,
+          "latency": 343,
+          "error": null
         }
       ],
       "incidents": [],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 78,
-        "successfulChecks": 78
+        "totalChecks": 79,
+        "successfulChecks": 79
       }
     },
     "https://norweh.com/": {
@@ -1107,22 +1114,31 @@
           "status": null,
           "latency": null,
           "error": "This operation was aborted"
+        },
+        {
+          "timestamp": "2026-04-27T20:07:01.418Z",
+          "success": true,
+          "status": 200,
+          "latency": 362,
+          "error": null
         }
       ],
-      "incidents": [],
-      "currentIncident": {
-        "id": "inc-1777316335281",
-        "site": "norweh.com",
-        "url": "https://norweh.com/",
-        "startedAt": "2026-04-27T18:58:55.281Z",
-        "endedAt": null,
-        "durationMs": null,
-        "error": "This operation was aborted",
-        "checksDown": 1
-      },
+      "incidents": [
+        {
+          "id": "inc-1777316335281",
+          "site": "norweh.com",
+          "url": "https://norweh.com/",
+          "startedAt": "2026-04-27T18:58:55.281Z",
+          "endedAt": "2026-04-27T20:07:01.418Z",
+          "durationMs": 4086137,
+          "error": "This operation was aborted",
+          "checksDown": 1
+        }
+      ],
+      "currentIncident": null,
       "stats": {
-        "totalChecks": 78,
-        "successfulChecks": 77
+        "totalChecks": 79,
+        "successfulChecks": 78
       }
     },
     "https://creometric.com": {
@@ -1674,13 +1690,20 @@
           "status": 200,
           "latency": 565,
           "error": null
+        },
+        {
+          "timestamp": "2026-04-27T20:07:01.440Z",
+          "success": true,
+          "status": 200,
+          "latency": 388,
+          "error": null
         }
       ],
       "incidents": [],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 78,
-        "successfulChecks": 78
+        "totalChecks": 79,
+        "successfulChecks": 79
       }
     },
     "https://basecampexplorer.com/": {
@@ -2232,13 +2255,20 @@
           "status": 200,
           "latency": 892,
           "error": null
+        },
+        {
+          "timestamp": "2026-04-27T20:07:01.784Z",
+          "success": true,
+          "status": 200,
+          "latency": 730,
+          "error": null
         }
       ],
       "incidents": [],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 78,
-        "successfulChecks": 78
+        "totalChecks": 79,
+        "successfulChecks": 79
       }
     },
     "https://coo.no/": {
@@ -2790,13 +2820,20 @@
           "status": 200,
           "latency": 948,
           "error": null
+        },
+        {
+          "timestamp": "2026-04-27T20:07:01.774Z",
+          "success": true,
+          "status": 200,
+          "latency": 721,
+          "error": null
         }
       ],
       "incidents": [],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 78,
-        "successfulChecks": 78
+        "totalChecks": 79,
+        "successfulChecks": 79
       }
     },
     "http://norweh.ca/": {
@@ -3348,6 +3385,13 @@
           "status": 200,
           "latency": 1083,
           "error": null
+        },
+        {
+          "timestamp": "2026-04-27T20:07:01.912Z",
+          "success": true,
+          "status": 200,
+          "latency": 857,
+          "error": null
         }
       ],
       "incidents": [
@@ -3374,11 +3418,11 @@
       ],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 78,
-        "successfulChecks": 76
+        "totalChecks": 79,
+        "successfulChecks": 77
       }
     }
   },
   "regionChecks": {},
-  "lastUpdated": "2026-04-27T18:58:55.282Z"
+  "lastUpdated": "2026-04-27T20:07:01.912Z"
 }
