@@ -598,13 +598,20 @@
           "status": 200,
           "latency": 338,
           "error": null
+        },
+        {
+          "timestamp": "2026-04-28T08:41:11.715Z",
+          "success": true,
+          "status": 200,
+          "latency": 152,
+          "error": null
         }
       ],
       "incidents": [],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 85,
-        "successfulChecks": 85
+        "totalChecks": 86,
+        "successfulChecks": 86
       }
     },
     "https://norweh.com/": {
@@ -1205,6 +1212,13 @@
           "status": 200,
           "latency": 300,
           "error": null
+        },
+        {
+          "timestamp": "2026-04-28T08:41:11.828Z",
+          "success": true,
+          "status": 200,
+          "latency": 204,
+          "error": null
         }
       ],
       "incidents": [
@@ -1221,8 +1235,8 @@
       ],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 85,
-        "successfulChecks": 84
+        "totalChecks": 86,
+        "successfulChecks": 85
       }
     },
     "https://creometric.com": {
@@ -1823,13 +1837,20 @@
           "status": 200,
           "latency": 275,
           "error": null
+        },
+        {
+          "timestamp": "2026-04-28T08:41:11.833Z",
+          "success": true,
+          "status": 200,
+          "latency": 214,
+          "error": null
         }
       ],
       "incidents": [],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 85,
-        "successfulChecks": 85
+        "totalChecks": 86,
+        "successfulChecks": 86
       }
     },
     "https://basecampexplorer.com/": {
@@ -2430,22 +2451,31 @@
           "status": null,
           "latency": null,
           "error": "fetch failed"
+        },
+        {
+          "timestamp": "2026-04-28T08:41:12.479Z",
+          "success": true,
+          "status": 200,
+          "latency": 857,
+          "error": null
         }
       ],
-      "incidents": [],
-      "currentIncident": {
-        "id": "inc-1777357198894",
-        "site": "basecampexplorer.com",
-        "url": "https://basecampexplorer.com/",
-        "startedAt": "2026-04-28T06:19:58.894Z",
-        "endedAt": null,
-        "durationMs": null,
-        "error": "fetch failed",
-        "checksDown": 1
-      },
+      "incidents": [
+        {
+          "id": "inc-1777357198894",
+          "site": "basecampexplorer.com",
+          "url": "https://basecampexplorer.com/",
+          "startedAt": "2026-04-28T06:19:58.894Z",
+          "endedAt": "2026-04-28T08:41:12.479Z",
+          "durationMs": 8473585,
+          "error": "fetch failed",
+          "checksDown": 1
+        }
+      ],
+      "currentIncident": null,
       "stats": {
-        "totalChecks": 85,
-        "successfulChecks": 84
+        "totalChecks": 86,
+        "successfulChecks": 85
       }
     },
     "https://coo.no/": {
@@ -3046,13 +3076,20 @@
           "status": 200,
           "latency": 682,
           "error": null
+        },
+        {
+          "timestamp": "2026-04-28T08:41:12.395Z",
+          "success": true,
+          "status": 200,
+          "latency": 774,
+          "error": null
         }
       ],
       "incidents": [],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 85,
-        "successfulChecks": 85
+        "totalChecks": 86,
+        "successfulChecks": 86
       }
     },
     "http://norweh.ca/": {
@@ -3653,6 +3690,13 @@
           "status": 200,
           "latency": 954,
           "error": null
+        },
+        {
+          "timestamp": "2026-04-28T08:41:12.703Z",
+          "success": true,
+          "status": 200,
+          "latency": 1080,
+          "error": null
         }
       ],
       "incidents": [
@@ -3679,11 +3723,11 @@
       ],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 85,
-        "successfulChecks": 83
+        "totalChecks": 86,
+        "successfulChecks": 84
       }
     }
   },
   "regionChecks": {},
-  "lastUpdated": "2026-04-28T06:19:58.894Z"
+  "lastUpdated": "2026-04-28T08:41:12.704Z"
 }
