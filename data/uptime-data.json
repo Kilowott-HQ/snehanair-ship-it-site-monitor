@@ -976,13 +976,20 @@
           "status": 200,
           "latency": 359,
           "error": null
+        },
+        {
+          "timestamp": "2026-05-01T21:31:01.171Z",
+          "success": true,
+          "status": 200,
+          "latency": 292,
+          "error": null
         }
       ],
       "incidents": [],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 139,
-        "successfulChecks": 139
+        "totalChecks": 140,
+        "successfulChecks": 140
       }
     },
     "https://norweh.com/": {
@@ -1961,6 +1968,13 @@
           "status": 200,
           "latency": 491,
           "error": null
+        },
+        {
+          "timestamp": "2026-05-01T21:31:01.357Z",
+          "success": true,
+          "status": 200,
+          "latency": 421,
+          "error": null
         }
       ],
       "incidents": [
@@ -1977,8 +1991,8 @@
       ],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 139,
-        "successfulChecks": 138
+        "totalChecks": 140,
+        "successfulChecks": 139
       }
     },
     "https://creometric.com": {
@@ -2957,13 +2971,20 @@
           "status": 200,
           "latency": 569,
           "error": null
+        },
+        {
+          "timestamp": "2026-05-01T21:31:01.435Z",
+          "success": true,
+          "status": 200,
+          "latency": 503,
+          "error": null
         }
       ],
       "incidents": [],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 139,
-        "successfulChecks": 139
+        "totalChecks": 140,
+        "successfulChecks": 140
       }
     },
     "https://basecampexplorer.com/": {
@@ -3942,6 +3963,13 @@
           "status": 200,
           "latency": 875,
           "error": null
+        },
+        {
+          "timestamp": "2026-05-01T21:31:01.802Z",
+          "success": true,
+          "status": 200,
+          "latency": 868,
+          "error": null
         }
       ],
       "incidents": [
@@ -3958,8 +3986,8 @@
       ],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 139,
-        "successfulChecks": 138
+        "totalChecks": 140,
+        "successfulChecks": 139
       }
     },
     "https://coo.no/": {
@@ -4938,22 +4966,31 @@
           "status": null,
           "latency": null,
           "error": "fetch failed"
+        },
+        {
+          "timestamp": "2026-05-01T21:31:01.985Z",
+          "success": true,
+          "status": 200,
+          "latency": 1052,
+          "error": null
         }
       ],
-      "incidents": [],
-      "currentIncident": {
-        "id": "inc-1777667851473",
-        "site": "coo.no",
-        "url": "https://coo.no/",
-        "startedAt": "2026-05-01T20:37:31.473Z",
-        "endedAt": null,
-        "durationMs": null,
-        "error": "fetch failed",
-        "checksDown": 1
-      },
+      "incidents": [
+        {
+          "id": "inc-1777667851473",
+          "site": "coo.no",
+          "url": "https://coo.no/",
+          "startedAt": "2026-05-01T20:37:31.473Z",
+          "endedAt": "2026-05-01T21:31:01.985Z",
+          "durationMs": 3210512,
+          "error": "fetch failed",
+          "checksDown": 1
+        }
+      ],
+      "currentIncident": null,
       "stats": {
-        "totalChecks": 139,
-        "successfulChecks": 138
+        "totalChecks": 140,
+        "successfulChecks": 139
       }
     },
     "http://norweh.ca/": {
@@ -5932,6 +5969,13 @@
           "status": 200,
           "latency": 1080,
           "error": null
+        },
+        {
+          "timestamp": "2026-05-01T21:31:01.966Z",
+          "success": true,
+          "status": 200,
+          "latency": 1031,
+          "error": null
         }
       ],
       "incidents": [
@@ -5958,11 +6002,11 @@
       ],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 139,
-        "successfulChecks": 137
+        "totalChecks": 140,
+        "successfulChecks": 138
       }
     }
   },
   "regionChecks": {},
-  "lastUpdated": "2026-05-01T20:37:31.474Z"
+  "lastUpdated": "2026-05-01T21:31:01.986Z"
 }
