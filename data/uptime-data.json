@@ -2901,22 +2901,31 @@
           "status": null,
           "latency": null,
           "error": "fetch failed"
+        },
+        {
+          "timestamp": "2026-05-20T04:38:18.116Z",
+          "success": true,
+          "status": 200,
+          "latency": 315,
+          "error": null
         }
       ],
-      "incidents": [],
-      "currentIncident": {
-        "id": "inc-1779232310962",
-        "site": "kodework",
-        "url": "https://kodework.com",
-        "startedAt": "2026-05-19T23:11:50.962Z",
-        "endedAt": null,
-        "durationMs": null,
-        "error": "fetch failed",
-        "checksDown": 2
-      },
+      "incidents": [
+        {
+          "id": "inc-1779232310962",
+          "site": "kodework",
+          "url": "https://kodework.com",
+          "startedAt": "2026-05-19T23:11:50.962Z",
+          "endedAt": "2026-05-20T04:38:18.116Z",
+          "durationMs": 19587154,
+          "error": "fetch failed",
+          "checksDown": 2
+        }
+      ],
+      "currentIncident": null,
       "stats": {
-        "totalChecks": 414,
-        "successfulChecks": 412
+        "totalChecks": 415,
+        "successfulChecks": 413
       }
     },
     "https://norweh.com/": {
@@ -5820,6 +5829,13 @@
           "status": 200,
           "latency": 476,
           "error": null
+        },
+        {
+          "timestamp": "2026-05-20T04:38:19.001Z",
+          "success": true,
+          "status": 200,
+          "latency": 1147,
+          "error": null
         }
       ],
       "incidents": [
@@ -5836,8 +5852,8 @@
       ],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 414,
-        "successfulChecks": 413
+        "totalChecks": 415,
+        "successfulChecks": 414
       }
     },
     "https://creometric.com": {
@@ -8741,13 +8757,20 @@
           "status": 200,
           "latency": 749,
           "error": null
+        },
+        {
+          "timestamp": "2026-05-20T04:38:18.162Z",
+          "success": true,
+          "status": 200,
+          "latency": 311,
+          "error": null
         }
       ],
       "incidents": [],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 414,
-        "successfulChecks": 414
+        "totalChecks": 415,
+        "successfulChecks": 415
       }
     },
     "https://basecampexplorer.com/": {
@@ -11651,6 +11674,13 @@
           "status": 200,
           "latency": 1027,
           "error": null
+        },
+        {
+          "timestamp": "2026-05-20T04:38:18.508Z",
+          "success": true,
+          "status": 200,
+          "latency": 655,
+          "error": null
         }
       ],
       "incidents": [
@@ -11667,8 +11697,8 @@
       ],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 414,
-        "successfulChecks": 413
+        "totalChecks": 415,
+        "successfulChecks": 414
       }
     },
     "https://coo.no/": {
@@ -14572,6 +14602,13 @@
           "status": 200,
           "latency": 1406,
           "error": null
+        },
+        {
+          "timestamp": "2026-05-20T04:38:18.571Z",
+          "success": true,
+          "status": 200,
+          "latency": 719,
+          "error": null
         }
       ],
       "incidents": [
@@ -14608,8 +14645,8 @@
       ],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 414,
-        "successfulChecks": 411
+        "totalChecks": 415,
+        "successfulChecks": 412
       }
     },
     "http://norweh.ca/": {
@@ -17513,6 +17550,13 @@
           "status": 200,
           "latency": 1262,
           "error": null
+        },
+        {
+          "timestamp": "2026-05-20T04:38:19.085Z",
+          "success": true,
+          "status": 200,
+          "latency": 1231,
+          "error": null
         }
       ],
       "incidents": [
@@ -17609,11 +17653,11 @@
       ],
       "currentIncident": null,
       "stats": {
-        "totalChecks": 414,
-        "successfulChecks": 404
+        "totalChecks": 415,
+        "successfulChecks": 405
       }
     }
   },
   "regionChecks": {},
-  "lastUpdated": "2026-05-20T00:17:09.255Z"
+  "lastUpdated": "2026-05-20T04:38:19.085Z"
 }
